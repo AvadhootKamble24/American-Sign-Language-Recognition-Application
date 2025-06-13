@@ -18,7 +18,7 @@ last_detection_time = time.time()
 pause_threshold = 2.5  # in seconds
 
 # Groq API Key
-GROQ_API_KEY = "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"
+GROQ_API_KEY = "api key"
 
 # Global variable for live sentence UI
 current_sentence = "Waiting for signs..."
