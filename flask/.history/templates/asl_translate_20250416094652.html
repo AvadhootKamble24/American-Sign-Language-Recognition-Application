@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ASL Translator</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f7f9fc;
+      color: #2c3e50;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-size: 36px;
+      color: #34495e;
+    }
+
+    h2 {
+      margin: 10px 0 30px;
+      font-size: 24px;
+      color: #7f8c8d;
+    }
+
+    .top-bar {
+      width: 100%;
+      max-width: 1000px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .top-bar a {
+      text-decoration: none;
+      font-size: 16px;
+      color: #3498db;
+      background-color: #ecf0f1;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    .top-bar a:hover {
+      background-color: #d0e6f6;
+    }
+
+    #video-container {
+      position: relative;
+      width: 640px;
+      max-width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    #video {
+      width: 100%;
+      display: block;
+      border: 5px solid #e74c3c;
+    }
+
+    #output {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #2c3e50;
+      padding: 10px 20px;
+      border-radius: 8px;
+      background: #ecf0f1;
+      max-width: 640px;
+      text-align: center;
+    }
+
+    .btn {
+      margin-top: 25px;
+      padding: 12px 28px;
+      font-size: 18px;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #c0392b;
+    }
+
+    @media (max-width: 700px) {
+      h1 {
+        font-size: 28px;
+      }
+      h2 {
+        font-size: 20px;
+      }
+      .btn {
+        font-size: 16px;
+        padding: 10px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <h1>AASK - ASL Translator</h1>
+    <a href="/">⬅ Back</a>
+  </div>
+
+  <h2>Live ASL Detection & Translation</h2>
+
+  <div id="video-container">
+    <img id="video" src="{{ url_for('video_feed') }}" alt="Live Video Feed" />
+  </div>
+
+  <div id="output">Waiting for ASL input...</div>
+
+  <button class="btn" onclick="endSession()">End Session</button>
+
+  <script>
+    function endSession() {
+      fetch('/end_feed', { method: 'POST' })
+        .then(() => {
+          window.location.href = '/';
+        })
+        .catch(error => console.error('Error ending session:', error));
+    }
+  </script>
+
+</body>
+</html>

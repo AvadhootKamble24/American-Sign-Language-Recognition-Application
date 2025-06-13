@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ASL Words</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+    .card {
+      margin: 10px;
+      text-align: center;
+    }
+    .card img {
+      height: 180px;
+      border: 2px solid #fff;
+      border-radius: 10px;
+    }
+    .label {
+      margin-top: 8px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+    
+    <div class="top-bar">ASL Alphabet A-Z & 0-9</div>
+    <a class="back-btn" href="/learn">⬅ Back to Learn Page</a>
+
+  {% for word, filename in words %}
+    <div class="card">
+      <img src="{{ url_for('static', filename='image/words/' + filename) }}" alt="{{ word }}">
+      <div class="label">{{ word.replace("_", " ") }}</div>
+    </div>
+  {% endfor %}
+</body>
+</html>

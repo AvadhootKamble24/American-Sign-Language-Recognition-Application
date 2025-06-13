@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ASL Translate</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    h2 {
+      margin-bottom: 20px;
+    }
+    #video-container {
+      position: relative;
+      width: 640px;
+      height: 480px;
+    }
+    #video {
+      width: 100%;
+      height: auto;
+      border: 2px solid #e74c3c;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+    .btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <h1>AASK for Sign Language</h1>
+    <a href="/">⬅ Back</a>
+  </div> 
+
+  <h2>Live ASL Detection</h2>
+  <div id="video-container">
+    <img id="video" src="{{ url_for('video_feed') }}" />
+  </div>
+  <div id="output">Output will appear on the video.</div>
+  <button class="btn" onclick="endSession()">End</button>
+
+  <script>
+    function endSession() {
+      fetch('/end_feed', { method: 'POST' })
+        .then(() => {
+          window.location.href = '/';
+        })
+        .catch(error => console.error('Error ending session:', error));
+    }
+  </script>
+</body>
+</html>

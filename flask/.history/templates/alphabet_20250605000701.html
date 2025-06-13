@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>ASL Alphabet</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #d32f2f;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 20px;
+      background-color: #d32f2f;
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 20px;
+      justify-items: center;
+    }
+
+    .item {
+      text-align: center;
+    }
+
+    .item img {
+      max-width: 100px;
+      max-height: 100px;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .label {
+      margin-top: 8px;
+      font-weight: bold;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back">⬅ Back</a>
+  <h1>Alphabet A-Z & 0-9</h1>
+  <div class="grid">
+    <!-- Sample -->
+    <div class="item"><img src="images/alphabet/A.png"><div class="label">A</div></div>
+    <div class="item"><img src="images/alphabet/B.png"><div class="label">B</div></div>
+    <!-- Repeat for all letters and numbers -->
+    <!-- You can automate this with JavaScript if needed -->
+  </div>
+</body>
+</html>

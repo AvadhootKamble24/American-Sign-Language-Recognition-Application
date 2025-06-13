@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ASL Words</title>
+  <style>
+    body {
+      background: #111;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .top-bar {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .back-btn {
+      color: #fff;
+      text-decoration: none;
+      background-color: #444;
+      padding: 10px 15px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      transition: background 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #666;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    .card {
+      text-align: center;
+    }
+
+    .card img {
+      height: 140px;
+      width: auto;
+      border: 2px solid #fff;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .label {
+      margin-top: 8px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">ASL Alphabet A-Z & 0-9</div>
+  <a class="back-btn" href="/learn">⬅ Back to Learn Page</a>
+
+  <div class="grid-container">
+    {% for word, filename in words %}
+      <div class="card">
+        <img src="{{ url_for('static', filename='image/words/' + filename) }}" alt="{{ word }}">
+        <div class="label">{{ word.replace("_", " ") }}</div>
+      </div>
+    {% endfor %}
+  </div>
+
+</body>
+</html>
