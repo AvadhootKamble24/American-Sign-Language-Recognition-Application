@@ -35,7 +35,7 @@ American Sign Language Recognition Application/
 │   ├── best\_19\_classes.pt        # Model for 19-class ASL
 │   └── model.ipynb               # Notebook for training/testing
 
-````
+```
 
 ---
 
